@@ -1,0 +1,35 @@
+# http routing section
+[http]
+  [http.routers]
+    # Define a connection between requests and services
+    [http.routers.fg-hero]
+      entryPoints = ["web"]
+      rule = "PathPrefix(`/feedback`)"
+      service = "fg-hero"
+
+    [http.routers.fg-stream]
+      entryPoints = ["web"]
+      rule = "PathPrefix(`/api/v1/tea`)"
+      service = "fg-stream"
+
+  [http.services]
+    # Define how to reach an existing service on our infrastructure
+    [http.services.fg-hero.loadBalancer]
+      [http.services.fg-hero.loadBalancer.healthCheck]
+        path = "/health"
+        interval = "5s"
+        timeout = "3s"
+
+      [[http.services.fg-hero.loadBalancer.servers]]
+        url = "http://172.17.0.1:3000/"
+      [[http.services.fg-hero.loadBalancer.servers]]
+        url = "http://172.17.0.1:3001/"
+
+    [http.services.fg-stream.loadBalancer]
+      [http.services.fg-stream.loadBalancer.healthCheck]
+        path = "/health"
+        interval = "5s"
+        timeout = "3s"
+
+      [[http.services.fg-stream.loadBalancer.servers]]
+        url = "http://172.17.0.1:10011/"

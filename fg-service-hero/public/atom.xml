@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title>Top gaming news</title>
+    <link href="https://www.gamespot.com/"/>
+    <updated>2020-03-28T18:30:02Z</updated>
+    <author>
+        <name>Game Spot</name>
+    </author>
+    <id>urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6</id>
+
+    <entry>
+        <title>Adam Sandler Interested In New Netflix Movie Dan Pan</title>
+        <link href="https://www.gamespot.com/articles/adam-sandler-interested-in-new-netflix-movie-dan-p/1100-6476726/"/>
+        <id>urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a</id>
+        <updated>2020-03-28T18:30:02Z</updated>
+        <summary>Another Sandler-related film is set to be in development at Netflix.</summary>
+        <category term="top news" label="top news"></category>
+    </entry>
+
+    <entry>
+        <title>Assassin's Creed Valhalla's Two Eivor Actors Have Been Revealed</title>
+        <link href="https://www.gamespot.com/articles/assassins-creed-valhallas-two-eivor-actors-have-be/1100-6476725/"/>
+        <id>urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa66</id>
+        <updated>2020-03-27T14:30:02Z</updated>
+        <summary>Ubisoft hires two Danish actors to portray the lead roles in the upcoming next-gen Assassin's Creed title.</summary>
+        <category term="top news" label="top news"></category>
+    </entry>
+
+    <entry>
+        <title>Rainbow Six Siege Nerfs Ying Following Feedback</title>
+        <link href="https://www.gamespot.com/articles/rainbow-six-siege-nerfs-ying-following-feedback/1100-6476724/"/>
+        <id>urn:uuid:1225c695-cfb8-3ebb-aaaa-80da344efa66</id>
+        <updated>2020-03-27T11:30:02Z</updated>
+        <summary>Sorry Ying mains, your time in the sun is over.</summary>
+        <category term="top news" label="top news"></category>
+    </entry>
+
+    <entry>
+        <title>Space Jam 2 Title Finally Revealed</title>
+        <link href="https://www.gamespot.com/articles/space-jam-2-title-finally-revealed/1100-6476723/"/>
+        <id>urn:uuid:5225c695-cfb8-3ebb-aaaa-80da344efa66</id>
+        <updated>2020-03-27T16:20:02Z</updated>
+        <summary>Finally, my childhood has a sequel</summary>
+        <category term="Games" label="Games"></category>
+    </entry>
+</feed>

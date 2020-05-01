@@ -1,0 +1,212 @@
+swagger: "2.0"
+info:
+  version: "0.0.4"
+  title: FG stream service
+# during dev, should point to your local machine
+host: localhost:10011
+# basePath prefixes all resource paths 
+basePath: /api/v1
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+  - application/xml
+paths:
+  /stream/requests:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: streams
+    get:
+      description: List of stream types for request
+      # used as the method name of the controller
+      operationId: listRequests
+      parameters:
+        - name: channelId
+          in: query
+          description: Stream channel to filter out
+          required: false
+          type: string
+        - name: startTime
+          in: query
+          description: Start time of requests updates
+          required: false
+          type: string  
+        - name: endTime
+          in: query
+          description: End time of requests updates
+          required: false
+          type: string   
+        - name: page
+          in: query
+          description: Page to iterate, 1 is default
+          required: false
+          type: number             
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+                $ref: "#/definitions/StreamRequest"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+
+  /stream/types:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: streams
+    get:
+      description: List of channel types for request
+      # used as the method name of the controller
+      operationId: listStreamTypes
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+                $ref: "#/definitions/StreamType"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  /stream/requests:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: requests
+    get:
+      description: List of stream channel places
+      # used as the method name of the controller
+      operationId: listChannels
+      parameters:
+        - name: stream
+          in: query
+          description: The name of the stream type for filtering
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+                $ref: "#/definitions/StreamChannel"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  /stream/stats:
+    x-swagger-router-controller: requests
+    get:
+      description: List of stream channel places
+      # used as the method name of the controller
+      operationId: stats
+      parameters:
+        - name: date
+          in: query
+          description: Date to get the stats
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+              type: string
+              #$ref: "#/definitions/Orders"
+                      
+                    
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"        
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  StreamChannel:
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      link:
+        type: string
+      photo:
+        type: string
+      streamTypes:
+        type: array
+        description: Tea types that are available for requests
+        items:
+          type: string
+  StreamRequest:
+    required:
+      - id
+    properties:
+      id:
+        type: string
+      takeOffId:
+        type: number
+     streamType:
+        type: string
+      time:
+        type: string
+      status:
+        description: queue | online | taken
+        type: string
+       
+ StreamType:
+    required:
+      - id
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+        
+  Requests:
+    xml:
+      wrapped: true
+    type: array
+    items:
+      "$ref": "#/definitions/Request"
+  
+  Request:
+    xml: 
+      name :request
+    properties:
+      request:
+        type: string
+      date:
+        type: string
+        xml:
+          attribute: true
+      product:
+        type: string
+        xml:
+          attribute: true
+      category:
+        type: string
+        xml:
+          attribute: true
+        
+        
+        
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string

@@ -1,0 +1,10 @@
+<div>
+	{% for k, v in pairs(items) do %}
+		<li><b>{{v["name"]}}</b> located at {{v["link"]}}, and supported tea types: 
+			{% for kk, z in pairs(v["streamTypes"]) do %}
+			{{z}} 
+			{% end %}
+		</li>
+	{% end %}
+</div>
+ 
