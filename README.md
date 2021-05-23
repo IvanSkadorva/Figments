@@ -11,4 +11,4 @@ How we do it:
    * These tools combine esports broadcast and livestreaming video/audio pipelines with next generation motion capture technology.
     
 
-Technologies: Nginx, NodeJS, Swagger, Traefik, Docker, GitLab, Lua, XSLT, Express, OpenAPI, TypeScript, Yaml, JSON,XML, docker-compose, JS, HTML, CSS
+Technologies: Nginx, NodeJS, Swagger, Traefik, Docker
